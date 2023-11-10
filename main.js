@@ -1,93 +1,281 @@
+const API_URL = "https://fhu-faculty-api.netlify.app/fhu-faculty.json"
+//const API_URL="/fhu-faculty-api.json"
 
-const data = ["zero","one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"];
+      
+let cardInnerHTML = 
 
-const carousel = document.getElementsByClassName("carousel")[0];
-var activeIndex = Math.floor(data.length/2);
+addAllCards();
 
+async function  addAllCards() {
 
-function addCards() {
-    
-    data.forEach( (item, index) => {
-        let div = document.createElement('div');
-        div.classList.add("box");
-    
-        // if( index < activeIndex){
-        //     div.classList.add("left");
-        //     const offset = windowWidth/2 - cardWidth/2 - index * 10;
-        //     div.style.transform = `translateX(${-offset}px)`;
-        //     div.zIndex = index
-        //     //div.style.left = `${index*10}px`;
-        //     //div.style.transform+=` scale(${ Math.pow(0.9, length-index+1)})`;
-        // }
-        // else if(index === activeIndex)
-        // {
-        //     div.classList.add("active");
-        // }
-        // else {
-        //     div.classList.add("right");
-        //     const offset = windowWidth/2 - cardWidth/2 - (length - index+1) * 10;
-        //     console.log(offset)
-        //     div.style.transform = `translateX(${offset}px)`;
-        //     div.style.zIndex = (length - index);
-        //     div.style.right  = `${offset}px`
-        // }
-    
-        div.innerHTML = `${index} ${item}`
-    
-        carousel.appendChild(div);
+    // load the data
+
+    let response = await fetch(API_URL);
+    let people = await response.json();
+
+    people.forEach(person => {
+        console.log( person );
     });
-}
 
-addCards();
-updateCards();
+    ` <div class="flexbox max-w-md  h-auto rounded-md  bg-blue-600  text-white border-8 border-purple-500 border-style: outline-double outline-black -outline-offset-8">
+      
+    <div class="flex justify-between">
+      <div class="flex">
+        <span class="bg-gradient-to-b from-slate-300 via-slate-600 via to-slate-400 opacity-100 -ml-1 px-1 -my-1 h-6 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm z-40 text-lg text-slate-50">Basic</span>
+        <span class=" pl-2 pt-2 text-3xl">"DadJoke" Casey</span>
+      </div>
+      
+      <div class="flex p-1">
+        <span class="pt-6 text-sm">HP</span>
+        <span class="pt-3 pl-1 text-3xl">83</span>
+        <element class="bg-red-300 flex items-center justify-center rounded-full border-4 w-11 h-11  mx-2">
+          <span class="  fa-solid fa-heart text-lg text-red-700"></span>
+        </element>
+      </div>
+    </div>
 
-function updateCards() {
-    const length = data.length;
+    <div class="bg-[url('/images/headshots/kenan.jpg')] mt-2 mx-6 rounded-md border-slate-400 border-2 bg-cover bg-center bg-no-repeat  h-64 w-96 flex justify-end ">
+      <div class="bg-violet-800 text-slate-200 w-20 h-20 flexbox text-3xl text-center rounded-bl-3xl">
+        <span>Cost</span>
+        <span>6</span>
+      </div>
+    </div>
 
-    const boxes = document.querySelectorAll(".carousel .box");
+
+    <div class="bg-gradient-to-b from-slate-500 via-slate-200 via to-slate-500 text-center mx-2 rounded-bl-lg rounded-tl-xl rounded-br-3xl">
+      <div class="bg-gradient-to-b from-slate-300 via-slate-50 via to-slate-300  mx-5 m-1 text-slate-500 rounded-bl-md rounded-tl-3xl rounded-br-xl rounded-tr-3xl">No. 001 Wizard Faculty HT. 5'8" S:LOW Male</div>
+    </div>
+
+    <div class="flex justify-between mt-10">
+      <div class="flex">
+        <element class="bg-red-300 flex items-center justify-center rounded-full border-4 w-9 h-9  mx-2">
+          <span class=" fa-solid fa-heart text-red-700 text-md"></span>
+        </element>
+      </div>
+
+      <div class="pt-2 text-xl  font-bold">Indiscriminating Dad Joke</div>
+      
+      <div class="flex p-1">
+        <span class="text-3xl">62</span>
+        <span class=" pl-1 text-3xl">+</span>
+        
+      </div>
+    </div>
+
+    <span class="flex px-5 flex-wrap text-slate-300">Stun the opponent in disbelief. Decrease opponents attacks by 62 and stun them for a turn.</span>
     
-    boxes.forEach( (div, index) => {
-        if( index < activeIndex){
-            // left
-            div.classList.remove("active");
-            div.style.zIndex = index;
-            const offset = 100+(length-index)*2;
-            div.style.transform = `translateX(-${offset}%) scale(100%)`;
-        }
-        else if(index === activeIndex)
-        {
-            // middle
-            div.classList.add("active");
-            div.style.zIndex = 300;
-            div.style.transform = `translateX(0) scale(120%)`;
+    <div class="flex justify-between mt-10">
+      <div class="flex">
+        <element class="bg-red-300 flex items-center justify-center rounded-full border-4 w-9 h-9  mx-2">
+          <span><i class="fas fa-heart text-red-700 text-md"></i></span>
+        </element>
+      </div>
+
+      <div class="pt-2 text-xl font-bold">Ignorant Slang</div>
+      
+      <div class="flex p-1">
+        <span class="text-3xl">74</span>
+        <span class=" pl-1 text-3xl">+</span>
+        
+      </div>
+    </div>
+
+    <span class="flex px-5 flex-wrap text-slate-300">Hurt the feelings of the faculty through spiteful slang. Take 74 Health.</span>
+
+    <div class="my-6">
+      <div class="text-2xl text-center">Character Attributes</div>
+      <div class="mx-3 mt-2 text-slate-300 flex justify-between">
+        <span><span class="fa-solid fa-circle mr-1"></span>Associate Professor<span class="fa-solid fa-circle ml-1"></span></span>
+        <span><span class="fa-solid fa-circle mr-1"></span>Ph.D<span class="fa-solid fa-circle ml-1"></span></span>
+        <span><span class="fa-solid fa-circle mr-1"></span>Tenure<span class="fa-solid fa-circle ml-1"></span></span>
+       
+      </div>
+      <div class="mx-3 text-slate-300 flex justify-between">
+        <span><span class="fa-solid fa-circle mr-1"></span>Comp. Sci. Prof.<span class="fa-solid fa-circle ml-1"></span></span>
+        <span><span class="fa-solid fa-circle mr-1"></span>Math Eng and Comp Dept<span class="fa-solid fa-circle ml-1"></span></span>
+      </div>
+      
+    </div>
+    
+
+    <div class="flex mt-10">
+      <div class="bg-gradient-to-b from-slate-500 via-slate-200 via to-slate-500 text-center rounded-bl-lg rounded-tl-xl rounded-br-3xl">
+        <div class="flex bg-gradient-to-b from-slate-300 via-slate-50 via to-slate-300  mx-5 m-1 text-slate-500 rounded-bl-md rounded-tl-3xl rounded-br-xl rounded-tr-3xl">
+          <span class=" text-black text-xs font-bold mx-2 mt-2">Weaknesses</span>
+          <span>
+            <element class="bg-slate-400 flex items-center justify-center rounded-full w-7 h-7 ">
+              <span class="  fa-solid fa fa-clock text-slate-700 text-md"></span>
+            </element>
+          </span>
+          <span>
+            <element class="bg-slate-400 flex items-center justify-center rounded-full w-7 h-7 ml-1 mr-1 ">
+              <span class="  fa-solid fa fa-church text-slate-700 text-md "></span>
+            </element>
+          </span>
+          <span class=" text-black text-xs font-bold mx-2 mt-2">Resistance: Children</span>
+          <span class=" text-black text-xs font-bold mx-2 mt-2">#CODEHARD</span>
+        
+        </div>
+      </div>
+    </div>
+
+    <button class="heart" id="heart"></button>
+
+     
+
+  </div>`
+    // for each item in data set (each person)
+        // add that person's card to the DOM
+
+    people.forEach( person => {
+
+        let div = document.createElement('div');
+        let cardInnerHTML = 
+       
+        ` <div class="flexbox max-w-md  h-auto rounded-md  bg-blue-600  text-white border-8 border-purple-500 border-style: outline-double outline-black -outline-offset-8">
+      
+        <div class="flex justify-between">
+          <div class="flex">
+            <span class="bg-gradient-to-b from-slate-300 via-slate-600 via to-slate-400 opacity-100 -ml-1 px-1 -my-1 h-6 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm z-40 text-lg text-slate-50">Basic</span>
+            <span class=" pl-2 pt-2 text-3xl">"${person.NickName}" ${person.FirstName} ${person.LastName}</span>
+          </div>
+          
+          <div class="flex p-1">
+            <span class="pt-6 text-sm">HP</span>
+            <span class="pt-3 pl-1 text-3xl">${person.HitPoints}</span>
+            <element class="bg-red-300 flex items-center justify-center rounded-full border-4 w-11 h-11  mx-2">
+              <span class="  fa-solid fa-heart text-lg text-red-700"></span>
+            </element>
+          </div>
+        </div>
+
+        
+        <div class="bg-[url(https://fhu-faculty-api.netlify.app/images/headshots/${person.Image})] mt-2 mx-6 rounded-md border-slate-400 border-2 bg-cover bg-center bg-no-repeat  h-64 w-96 flex justify-end ">
+          <div class="bg-violet-800 text-slate-200 w-20 h-20 flexbox text-3xl text-center rounded-bl-3xl">
+            <span>Cost</span>
+            <span>${person.Cost}</span>
+          </div>
+        </div>
+  
+  
+        <div class="bg-gradient-to-b from-slate-500 via-slate-200 via to-slate-500 text-center mx-2 rounded-bl-lg rounded-tl-xl rounded-br-3xl">
+          <div class="bg-gradient-to-b from-slate-300 via-slate-50 via to-slate-300  mx-5 m-1 text-slate-500 rounded-bl-md rounded-tl-3xl rounded-br-xl rounded-tr-3xl">No. ${person.id} ${person.Type}  HT. ${person.Height}" S:${person.Stamina} Gender:${person.Gender}</div>
+        </div>
+  
+        <div class="flex justify-between mt-10">
+          <div class="flex">
+            <element class="bg-red-300 flex items-center justify-center rounded-full border-4 w-9 h-9  mx-2">
+              <span class=" fa-solid fa-heart text-red-700 text-md"></span>
+            </element>
+          </div>
+  
+          <div class="pt-2 text-xl  font-bold">${person.Attack1}</div>
+          
+          <div class="flex p-1">
+            <span class="text-3xl">${person.Attack1Damage}</span>
+            <span class=" pl-1 text-3xl">+</span>
+            
+          </div>
+        </div>
+  
+        <span class="flex px-5 flex-wfrap text-slate-300">Stun the opponent in disbelief. Decrease opponents attacks by 62 and stun them for a turn.</span>
+        
+        <div class="flex justify-between mt-10">
+          <div class="flex">
+            <element class="bg-red-300 flex items-center justify-center rounded-full border-4 w-9 h-9  mx-2">
+              <span><i class="fas fa-heart text-red-700 text-md"></i></span>
+            </element>
+          </div>
+  
+          <div class="pt-2 text-xl font-bold">${person.Attack2}</div>
+          
+          <div class="flex p-1">
+            <span class="text-3xl">${person.Attack2Damage}</span>
+            <span class=" pl-1 text-3xl">+</span>
+            
+          </div>
+        </div>
+  
+        <span class="flex px-5 flex-wrap text-slate-300">Hurt the feelings of the faculty through spiteful slang. Take 74 Health.</span>
+   
+        <div class="my-6">
+          <div class="text-2xl text-center">Character Attributes</div>
+          <div class="mx-3 mt-2 text-slate-300 flex justify-between">
+            <span><span class="fa-solid fa-circle mr-1"></span>${person.Rank}<span class="fa-solid fa-circle ml-1"></span></span>
+            <span><span class="fa-solid fa-circle mr-1"></span>${person.EducationLevel}<span class="fa-solid fa-circle ml-1"></span></span>
+            <span><span class="fa-solid fa-circle mr-1"></span>Tenure: ${person.Tenure}<span class="fa-solid fa-circle ml-1"></span></span>
+           
+          </div>
+          <div class="mx-3 text-slate-300 flex justify-between">
+            <span><span class="fa-solid fa-circle mr-1"></span>${person.Department}<span class="fa-solid fa-circle ml-1"></span></span>
+             </div>
+          
+        </div>
+        
+  
+        <div class="flex mt-10">
+          <div class="bg-gradient-to-b from-slate-500 via-slate-200 via to-slate-500 text-center rounded-bl-lg rounded-tl-xl rounded-br-3xl ">
+            <div class="flex bg-gradient-to-b from-slate-300 via-slate-50 via to-slate-300  mx-2 m-1 text-slate-500 rounded-bl-md rounded-tl-3xl rounded-br-xl rounded-tr-3xl">
+              <span class=" text-black text-s font-bold mx-2 mt-2">Weaknesses: ${person.Weaknesses}</span>
+              
+              <span class=" text-black text-s font-bold mx-2 mt-2">Resistance: ${person.Resistances}</span>
+              <span class=" text-black text-s font-bold mx-2 mt-2">${person.HashTag}</span>
+            
+            </div>
+          </div>
+        </div>
+      <div id="buttons" class="flex justify-between">
+        <button class="heart w-20 h-20 z-50 bg-white m-1 rounded-full text-slate-950 text-2xl" id="like">Like</button>
+        <button class="heart w-20 h-20 z-50 bg-white m-1 rounded-full text-slate-950 text-2xl" id="dislike">Dislike</button>
+      </div>
+      </div> `
+      
+
+        div.innerHTML = cardInnerHTML;
+
+        document.body.appendChild(div);
+
+        
+      let likeButton = document.getElementById("like").addEventListener('click', function() {
+        let lindex = 0;
+        if (lindex = 0) {
+          likeButton.style.backgroundColor = "green";
+          lindex++;
         }
         else {
-            //right 
-            div.classList.remove("active");
-            div.style.zIndex = (length - index);
-            const offset = 100+(index)*2;
-            div.style.transform = `translateX(${offset}%) scale(100%)`;
+          likeButton.style.backgroundColor = "white";
+          lindex--;
         }
+        
+      })
+      
+      
+      let dislikeButton = document.getElementById("dislike").addEventListener('click', function() {
+        let disdex = 0;
+        if (disdex = 0) {
+          dislikeButton.style.backgroundColor = "red";
+          disdex++;
+        }
+        else {
+          dislikeButton.style.backgroundColor = "white";
+          disdex--;
+        }
+
+      })
+
+
     });
+        
+    
+
 }
 
-window.addEventListener("resize", updateCards);
+function addCard(person) {
+
+}
 
 
-document.getElementById("prevButton").addEventListener("click", ()=>{
-    if( activeIndex >= 0)
-    {
-        activeIndex--;
-        updateCards();
-    }
-    
-});
 
-document.getElementById("nextButton").addEventListener("click", ()=>{
-    if( activeIndex < data.length)
-    {
-        activeIndex++;
-        updateCards();
-    }
-    
-});
+
+
+
