@@ -224,10 +224,7 @@ async function  addAllCards() {
             </div>
           </div>
         </div>
-      <div id="buttons" class="flex justify-between">
-        <button class="heart w-20 h-20 z-50 bg-white m-1 rounded-full text-slate-950 text-2xl" id="like">Like</button>
-        <button class="heart w-20 h-20 z-50 bg-white m-1 rounded-full text-slate-950 text-2xl" id="dislike">Dislike</button>
-      </div>
+     
       </div> `
       
 
