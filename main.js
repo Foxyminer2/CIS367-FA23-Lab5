@@ -212,8 +212,12 @@ async function  addAllCards() {
           
         </div>
         
+        <div id="buttons" class="flex justify-between">
+      <button class=" w-20 h-20 z-50 bg-white m-1 rounded-full text-slate-950 text-2xl" onclick="likeToggle(this)" id="like">Like</button>
+      <button class=" w-20 h-20 z-50 bg-white m-1 rounded-full text-slate-950 text-2xl" onclick="dislikeToggle(this)" id="dislike">Dislike</button>
+    </div>
   
-        <div class="flex mt-10">
+        <div class="flex mt-5">
           <div class="bg-gradient-to-b from-slate-500 via-slate-200 via to-slate-500 text-center rounded-bl-lg rounded-tl-xl rounded-br-3xl ">
             <div class="flex bg-gradient-to-b from-slate-300 via-slate-50 via to-slate-300  mx-2 m-1 text-slate-500 rounded-bl-md rounded-tl-3xl rounded-br-xl rounded-tr-3xl">
               <span class=" text-black text-s font-bold mx-2 mt-2">Weaknesses: ${person.Weaknesses}</span>
@@ -224,55 +228,81 @@ async function  addAllCards() {
             </div>
           </div>
         </div>
-     
-      </div> `
-      
+        
+      </div> 
+      `
+    
 
         div.innerHTML = cardInnerHTML;
 
         document.body.appendChild(div);
 
         
-      let likeButton = document.getElementById("like").addEventListener('click', function() {
-        let lindex = 0;
-        if (lindex = 0) {
-          likeButton.style.backgroundColor = "green";
-          lindex++;
-        }
-        else {
-          likeButton.style.backgroundColor = "white";
-          lindex--;
-        }
-        
-      })
       
-      
-      let dislikeButton = document.getElementById("dislike").addEventListener('click', function() {
-        let disdex = 0;
-        if (disdex = 0) {
-          dislikeButton.style.backgroundColor = "red";
-          disdex++;
-        }
-        else {
-          dislikeButton.style.backgroundColor = "white";
-          disdex--;
-        }
-
-      })
-
-
-    });
         
     
 
-}
+ })}
+
+
+
+
+//  function buttonColor(){
+//   document.getElementById("like").style.backgroundColor='#911';
+//  }
+
+//  buttonColor();
+//  let lindex = 0; 
+//  let disdex = 0;
+ 
+//  let likeButton = document.getElementById("like").addEventListener('click', function() {
+//   // if (lindex = 0) {
+//   //   likeButton.style.backgroundColor = "green";
+//   //   lindex++;
+//   // }
+//   // else {
+//   //   likeButton.style.backgroundColor = "white";
+//   //   lindex--;
+//   // }
+//   likeButton.style.backgroundColor = "green"
+  
+// })
+
+
+// let dislikeButton = document.getElementById("dislike").addEventListener('click', function() {
+//   if (disdex = 0) {
+//     dislikeButton.style.backgroundColor = "red";
+//     disdex++;
+//   }
+//   else {
+//     dislikeButton.style.backgroundColor = "white";
+//     disdex--;
+//   }
+
+// })
 
 function addCard(person) {
 
 }
 
+function likeToggle(element){
+  var currentColor = element.style.backgroundColor;
+  if(currentColor=="green"){
+    element.style.backgroundColor="white"
+  }
+  else{
+    element.style.backgroundColor="green"
+  }
+}
 
-
-
+function dislikeToggle(element){
+  var currentColor = element.style.backgroundColor;
+  if(currentColor=="red"){
+    element.style.backgroundColor="white"
+  }
+  else{
+    element.style.backgroundColor="red"
+  }
+}
 
 
